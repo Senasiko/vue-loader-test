@@ -1,7 +1,7 @@
 import { render, staticRenderFns } from "./App.vue?vue&type=template&id=7ba5bd90&scoped=true&"
 import script from "./App.vue?vue&type=script&lang=js&"
 export * from "./App.vue?vue&type=script&lang=js&"
-import style0 from "./App.vue?vue&type=style&index=0&id=7ba5bd90&scoped=true&lang=css&"
+import style0 from "./App.vue?vue&type=style&index=0&id=7ba5bd90&scoped=true&lang=scss&"
 
 
 /* normalize component */
@@ -19,7 +19,7 @@ var component = normalizer(
 
 /* hot reload */
 if (module.hot) {
-  var api = require("D:\\project\\vueLoader\\node_modules\\vue-hot-reload-api\\dist\\index.js")
+  var api = require("/Users/sena/Documents/projects/vue-loader-test/node_modules/vue-hot-reload-api/dist/index.js")
   api.install(require('vue'))
   if (api.compatible) {
     module.hot.accept()

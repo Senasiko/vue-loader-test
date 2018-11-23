@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const util = require('util')
 const hash = require('hash-sum')
 const qs = require('querystring')
 const plugin = require('./plugin')
@@ -27,8 +28,9 @@ function loadTemplateCompiler () {
 }
 
 module.exports = function (source) {
-  const loaderContext = this
+  fs.writeFileSync('./select.js', util.inspect(this.loaders, { depth: null }), 'utf-8');
 
+  const loaderContext = this
   if (!errorEmitted && !loaderContext['thread-loader'] && !loaderContext[NS]) {
     loaderContext.emitError(new Error(
       `vue-loader was used without the corresponding plugin. ` +
@@ -73,12 +75,14 @@ module.exports = function (source) {
   // e.g. foo.vue?type=template&id=xxxxx
   // and we will return early
   if (incomingQuery.type) {
+    console.log('select');
     return selectBlock(
       descriptor,
       loaderContext,
       incomingQuery,
       !!options.appendExtension
     )
+
   }
 
   // module id for scoped CSS & hot-reload
@@ -143,7 +147,7 @@ module.exports = function (source) {
       isServer || isShadow // needs explicit injection?
     )
   }
-
+  console.log('vue loader first')
   let code = `
 ${templateImport}
 ${scriptImport}
@@ -187,7 +191,6 @@ var component = normalizer(
   }`
 
   code += `\nexport default component.exports`
-  console.log(code)
   fs.writeFileSync('./code.js', code, 'utf-8');
   return code
 }

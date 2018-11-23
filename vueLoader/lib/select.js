@@ -1,3 +1,6 @@
+const fs = require('fs');
+const util = require('util');
+
 module.exports = function selectBlock (
   descriptor,
   loaderContext,
@@ -36,11 +39,13 @@ module.exports = function selectBlock (
     if (appendExtension) {
       loaderContext.resourcePath += '.' + (style.lang || 'css')
     }
+    console.log(loaderContext.loaderIndex);
     loaderContext.callback(
       null,
       style.content,
       style.map
     )
+    console.log('style end');
     return
   }
 

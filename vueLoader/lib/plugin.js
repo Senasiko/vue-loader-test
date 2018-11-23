@@ -49,7 +49,6 @@ class VueLoaderPlugin {
 
     // get the normlized "use" for vue files
     const vueUse = vueRule.use
-    console.log(vueUse);
     // get vue-loader options
     const vueLoaderUseIndex = vueUse.findIndex(u => {
       return /vueLoader(.+)lib(.+)index/.test(u.loader)

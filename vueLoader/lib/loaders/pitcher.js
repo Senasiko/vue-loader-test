@@ -29,6 +29,7 @@ module.exports = code => code
 // This pitching loader is responsible for intercepting all vue block requests
 // and transform it into appropriate requests.
 module.exports.pitch = function (remainingRequest) {
+  console.log('pitch');
   const options = loaderUtils.getOptions(this)
   const { cacheDirectory, cacheIdentifier } = options
   const query = qs.parse(this.resourceQuery.slice(1))
@@ -99,6 +100,7 @@ module.exports.pitch = function (remainingRequest) {
         stylePostLoaderPath,
         ...beforeLoaders
       ])
+      console.log(request);
       // console.log(request)
       return `import mod from ${request}; export default mod; export * from ${request}`
     }

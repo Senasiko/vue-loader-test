@@ -9,8 +9,12 @@ export default {
 }
 </script>
 
-<style  scoped>
+<style  scoped lang="scss">
   a {
     color: #000;
+
+    div {
+      color: #fff;
+    }
   }
 </style>

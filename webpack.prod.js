@@ -64,7 +64,7 @@ module.exports = {
 						}
 					},
 					{
-						loader: 'sass-loader',
+						loader: path.resolve(__dirname, 'sassLoader/lib/loader.js'),
 
 						options: {
 							sourceMap: true
@@ -80,8 +80,16 @@ module.exports = {
 			},
 		]
 	},
+	stats: {
+		entrypoints: false,
+		children: false,
+	},
 	plugins: [
 		new VueLoadPlugin(),
+		new MiniCssExtractPlugin({
+			filename: "[name].css",
+			chunkFilename: "[id].css"
+		})
 	],
 
 	entry: './src/index.js',
